@@ -23,6 +23,42 @@
 ;; EL-GET SYNC OVERLAYS
 (el-get-sync-recipes "el-get-haskell")
 (el-get-sync-recipes "el-get-user")
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
+
+(defvar base-packages
+      '(auto-complete cl-lib el-get fuzzy popup)
+      "Basic emacs packages")
+
+(defvar common-packages '(package)
+  "A list of common packages to ensure are installed at launch.")
+
+(defvar ui-packages '(color-theme color-theme-solarized)
+  "A list of UI packages to ensure are installed at launch.")
+
+(defvar git-packages '(git-modes magit)
+  "Packages related to git.")
+
+(defvar haskell-packages '(haskell-mode structured-haskell-mode)
+  "Packages related to haskell.")
+
+(defvar my-packages (append base-packages common-packages ui-packages git-packages haskell-packages)
+  "Combined list of packes to be installed")
+
+(setq my-packages (append base-packages common-packages ui-packages git-packages haskell-packages))
+
+(el-get 'sync my-packages)
+
+(package-initialize)
+(defvar pkg-packages '(better-defaults)
+  "A list of packages that are installed outside of el-get with package.")
+
+(dolist (p pkg-packages)
+  (when (not (package-installed-p p))
+    (message "package not installed: %s" p)
+    (package-install p)))
+
 ;; CUSTOM FILE
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file 'noerror)
