@@ -1,3 +1,5 @@
+(color-theme-solarized-dark)
+
 (column-number-mode 1)
 (global-linum-mode 1)
 
