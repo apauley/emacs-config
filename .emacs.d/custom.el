@@ -7,6 +7,8 @@
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ f" 'recentf-open-files)
 
+(global-set-key "\C-x\ g" 'magit-status)
+
 (global-set-key (kbd "C-<right>") 'windmove-right)
 (global-set-key (kbd "C-<left>") 'windmove-left)
 
