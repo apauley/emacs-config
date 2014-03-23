@@ -17,6 +17,7 @@
     (eval-print-last-sexp)))
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-haskell/recipes")
 (el-get 'sync)
 
 ;; Other
